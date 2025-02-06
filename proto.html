@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Repair Shop Management Forms</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #eef2f7;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+                padding: 20px;
+            }
+            .form-container {
+                background: linear-gradient(135deg, #f4f4f9, #e8e8ef);
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+                width: 100%;
+                max-width: 500px;
+            }
+            .form-container h2 {
+                text-align: center;
+                margin-bottom: 15px;
+                color: #333;
+                font-size: 24px;
+            }
+            .form-group {
+                margin-bottom: 20px;
+                margin-right: 20px;
+            }
+            .form-group label {
+                display: block;
+                margin-bottom: 8px;
+                font-weight: bold;
+                color: #555;
+            }
+            .form-group input, .form-group select, .form-group textarea {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #d1d5db;
+                border-radius: 6px;
+                font-size: 15px;
+                box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+            }
+            .form-group textarea {
+                resize: vertical;
+            }
+            .form-actions {
+                text-align: center;
+            }
+            .form-actions button {
+                padding: 12px 25px;
+                border: none;
+                background-color: #4CAF50;
+                color: white;
+                border-radius: 5px;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+            .form-actions button:hover {
+                background-color: #45a049;
+            }
+            .form-actions button:active {
+                background-color: #3d8b41;
+            }
+            .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+                border-color: #4CAF50;
+                outline: none;
+                box-shadow: 0 0 5px rgba(72, 180, 97, 0.5);
+            }
+            input:invalid {
+                border: 2px double  red;
+            }
+
+            input:valid {
+                border: 2px solid black;
+            }
+        </style>
+    </head>
+<body>
+    <!-- Customer Form -->
+    <div class="form-container">
+        <h2>Customer Form</h2>
+        <form>
+            <div class="form-group">
+                <label for="customer-name">*Customer Name</label>
+                <input type="text" id="customer-name" name="customer-name" pattern="[A-Za-z0-9\s]+" required>
+            </div>
+            <div class="form-group">
+                <label for="address">*Address</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="phone-number">*Phone Number</label>
+                <input type="tel" id="phone-number" name="phone-number" pattern="09[0-9]{9}" placeholder="09395523711" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Vehicle Form -->
+    <div class="form-container">
+        <h2>Vehicle Form</h2>
+        <form>
+            <div class="form-group">
+                <label for="customer-id">*Customer ID</label>
+                <input type="number" id="customer-id" name="customer-id" required>
+            </div>
+            <div class="form-group">
+                <label for="vehicle-model">*Vehicle Model</label>
+                <input type="text" id="vehicle-model" name="vehicle-model" required>
+            </div>
+            <div class="form-group">
+                <label for="color">Color</label>
+                <input type="text" id="color" name="color">
+            </div>
+            <div class="form-group">
+                <label for="engine">Engine</label>
+                <input type="text" id="engine" name="engine">
+            </div>
+            <div class="form-group">
+                <label for="mileage">Mileage</label>
+                <input type="number" id="mileage" name="mileage">
+            </div>
+            <div class="form-group">
+                <label for="plate">Plate</label>
+                <input pattern="{8}" type="text" id="plate" name="plate">
+            </div>
+            <div class="form-actions">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Technician Form -->
+    <div class="form-container">
+        <h2>Technician Form</h2>
+        <form>
+            <div class="form-group">
+                <label for="technician-name">*Technician Name</label>
+                <input type="text" id="technician-name" name="technician-name" pattern="[A-Za-z0-9\s]+" required>
+            </div>
+            <div class="form-group">
+                <label for="phone-number">*Phone Number</label>
+                <input type="tel" id="phone-number" name="phone-number" pattern="09[0-9]{9}" placeholder="09395523711" required>
+            </div>
+            <div class="form-group">
+                <label for="rating">*Rating (0-10)</label>
+                <input type="range" id="rating" name="rating" min="0" max="10" class="slider2" value="5" required>
+                <span class="slider-value">5</span>
+            </div>
+            <script>
+                // Select all sliders and their corresponding display elements
+                const sliders2 = document.querySelectorAll('.slider2');
+            
+                sliders2.forEach(slider2 => {
+                    const valueDisplay = slider2.nextElementSibling;
+            
+                    // Set the initial display value
+                    valueDisplay.textContent = slider2.value;
+            
+                    // Update the display value dynamically
+                    slider2.addEventListener('input', () => {
+                        valueDisplay.textContent = slider2.value;
+                    });
+                });
+            </script>
+            <div class="form-group">
+                <label for="experience">*Experience (Months)</label>
+                <input type="number" id="experience" name="experience" required>
+            </div>
+            <div class="form-group">
+                <label for="specialization">Specialization</label>
+                <input type="text" id="specialization" name="specialization">
+            </div>
+            <div class="form-actions">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Task Form -->
+    <div class="form-container">
+        <h2>Task Form</h2>
+        <form>
+            <div class="form-group">
+                <label for="task-name">*Task Name</label>
+                <input type="text" id="task-name" name="task-name" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="estimated-time">Estimated Time</label>
+                <input type="datetime-local" id="estimated-time" name="estimated-time">
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" id="price" name="price" min="0" step="0.01">
+            </div>
+            <div class="form-group">
+                <label for="priority">Priority</label>
+                <select id="priority" name="priority">
+                    <option value="Low">Low</option>
+                    <option value="Medium" selected>Medium</option>
+                    <option value="High">High</option>
+                </select>
+            </div>
+            <div class="form-actions">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <!-- Repair Shop Form -->
+    <div class="form-container">
+        <h2>Repair Shop Form</h2>
+        <form>
+            <div class="form-group">
+                <label for="shop-name">*Shop Name</label>
+                <input type="text" id="shop-name" name="shop-name" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address">
+            </div>
+            <div class="form-group">
+                <label for="phone-number">Phone Number</label>
+                <input type="tel" id="phone-number" name="phone-number" pattern="09[0-9]{9}" placeholder="09395523711">
+            </div>
+            <div class="form-group">
+                <label for="owner">Owner</label>
+                <input type="text" id="owner" name="owner" pattern="[A-Za-z\s]+">
+            </div>
+            <div class="form-group">
+                <label for="rating">Rating (0-10)</label>
+                <input type="range" id="rating" name="rating" min="0" max="10" value="5" class="slider">
+                <span class="slider-value">5</span>
+            </div>
+            
+            
+            <script>
+                // Select all sliders and their corresponding display elements
+                const sliders = document.querySelectorAll('.slider');
+            
+                sliders.forEach(slider => {
+                    const valueDisplay = slider.nextElementSibling;
+            
+                    // Set the initial display value
+                    valueDisplay.textContent = slider.value;
+            
+                    // Update the display value dynamically
+                    slider.addEventListener('input', () => {
+                        valueDisplay.textContent = slider.value;
+                    });
+                });
+            </script>
+            </div>
+            <div class="form-actions">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <!-- Service Catalogue Form -->
+    <div class="form-container">
+        <h2>Service Catalogue Form</h2>
+        <form>
+            <div class="form-group">
+                <label for="service-name">*Service Name</label>
+                <input type="text" id="service-name" name="service-name" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="category">*Category</label>
+                <input type="text" id="category" name="category" required>
+            </div>
+            <div class="form-group">
+                <label for="cost">*Cost</label>
+                <input type="number" id="cost" name="cost" min="0" step="0.01" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <!-- Spare_Part Form -->
+    <div class="form-container">
+        <h2>Spare Part Form</h2>
+        <form>
+            <div class="form-group">
+                <label for="part-name">*Part Name</label>
+                <input type="text" id="part-name" name="part-name" required>
+            </div>
+            <div class="form-group">
+                <label for="compatible-models">*Compatible Models</label>
+                <input type="text" id="compatible-models" name="compatible-models" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="category">*Category</label>
+                <input type="text" id="category" name="category" required>
+            </div>
+            <div class="form-group">
+                <label for="cost">*Cost</label>
+                <input type="number" id="cost" name="cost" min="0" step="0.01" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+     <!-- Invoices Form -->
+    <div class="form-container">
+        <h2>Invoice Form</h2>
+        <form>
+            <div class="form-group">
+                <label for="customer-id">*Customer ID</label>
+                <input type="number" id="customer-id" name="customer-id" required>
+            </div>
+            <div class="form-group">
+                <label for="date-time">*Date and Time</label>
+                <input type="datetime-local" id="date-time" name="date-time" required>
+            </div>
+            <div class="form-group">
+                <label for="discount">Discount</label>
+                <input type="number" id="discount" name="discount" min="0" step="0.01">
+            </div>
+            <div class="form-group">
+                <label for="payment-status">Payment Status</label>
+                <select id="payment-status" name="payment-status">
+                    <option value="Pending" selected>Pending</option>
+                    <option value="Paid">Paid</option>
+                    <option value="Cancelled">Cancelled</option>
+                    <option value="Refunded">Refunded</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="total-price">*Total Price</label>
+                <input type="number" id="total-price" name="total-price" min="0" step="0.01" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+     <!-- Schedule Form -->
+    <div class="form-container">
+        <h2>Schedule Form</h2>
+        <form>
+            <div class="form-group">
+                <label for="schedule-date">*Schedule Date</label>
+                <input type="datetime-local" id="schedule-date" name="schedule-date" required>
+            </div>
+            <div class="form-group">
+                <label for="technician-id">*Technician ID</label>
+                <input type="number" id="technician-id" name="technician-id" required>
+            </div>
+            <div class="form-group">
+                <label for="vehicle-id">*Vehicle ID</label>
+                <input type="number" id="vehicle-id" name="vehicle-id" required>
+            </div>
+            <div class="form-group">
+                <label for="task-id">*Task ID</label>
+                <input type="number" id="task-id" name="task-id" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    
+    
+</body>
+</html>
